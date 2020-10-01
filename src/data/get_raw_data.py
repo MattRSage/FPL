@@ -15,19 +15,22 @@ def main(project_dir):
     # get logger
     logger = logging.getLogger(__name__)
     logger.info('getting raw data')
-    
-    # key for player elements
-    key = 'elements'
+        
     
     # urls
     train_url = 'https://fantasy.premierleague.com/api/bootstrap-static/'
     
     # file paths
     raw_data_path = os.path.join(project_dir,'data','raw')
-    train_data_path = os.path.join(raw_data_path,'train.csv')
-    
+    elements_data_path = os.path.join(raw_data_path,'elements.csv')
+    element_types_data_path = os.path.join(raw_data_path,'element_types.csv')
+    teams_data_path = os.path.join(raw_data_path,'teams.csv')
+
     # extract data
-    extract_data(key, train_url, train_data_path)
+    extract_data('elements', train_url, elements_data_path)
+    extract_data('element_types', train_url, element_types_data_path)
+    extract_data('teams', train_url, teams_data_path)
+
     logger.info('downloaded raw training data')
     
 if __name__ == '__main__':
